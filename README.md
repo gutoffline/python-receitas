@@ -1,4 +1,4 @@
-# APP Receitas
+# PersonalCheff
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
@@ -7,17 +7,19 @@
 
 <img src="exemplo-image.png" alt="exemplo imagem">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> Uma aplicação web de receitas culinárias chamada PersonalCheff que receberá novas receitas de culinária utilizando Python e o framework de Django. Clicando em cada ícone, serão apresentadas as informações, ingredientes e modo de preparo.
 
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
+- [X] Pré-requisitos
+    - [X] Instalar o Python
+    - [X] Instalar Visual Studio Code
+- [ ] Criar o ambiente virtual
+- [ ] Instalar o Django
+- [ ] Criar o projeto PersonalCheff
+- [ ] Subir o servidor e testar o projeto
 
 
 ## 📫 Contribuindo para <nome_do_projeto>

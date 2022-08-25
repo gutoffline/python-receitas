@@ -56,7 +56,7 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - no arquivo  `urls.py`
         ```python
             # para poder utilizar as urls do django precisamos importar as urls
-            from django.urls import re_path
+            from django.urls import path
 
             # o arquivo de views é quem faz a manipulação de qual url será devolvida e exibida 
             from . import views
@@ -75,7 +75,17 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
             def index(request):
                 return HttpResponse('<h1>PersonalCheff</h1>')
         ```
+- [X] Registrando a rota inicial
+    - Dentro da pasta PersonalCheff(app) abrir o arquivo `urls.py`
+        ```python
+            from django.contrib import admin
+            from django.urls import path, include
 
+            urlpatterns = [
+                path('', include('receitas.urls')),
+                path('admin/', admin.site.urls),
+            ]
+        ```
 Agora, precisamos acessá-lo entrando na pasta "receita" que ainda não tem nada relacionado a url.
 
 ## 📫 Contribuindo para <nome_do_projeto>

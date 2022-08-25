@@ -66,6 +66,15 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
                 path('',views.index, name='index')
             ]
         ```
+- [X] Criando a view para a rota inicial
+    - Dentro da pasta receitas(app) abrir o arquivo `views.py`
+        ```python
+            from django.shortcuts import render
+            from django.http import HttpResponse
+
+            def index(request):
+                return HttpResponse('<h1>PersonalCheff</h1>')
+        ```
 
 Agora, precisamos acessá-lo entrando na pasta "receita" que ainda não tem nada relacionado a url.
 

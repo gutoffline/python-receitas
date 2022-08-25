@@ -96,7 +96,10 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
         def index(request):
             return render(request, 'index.html')
         ```
-
+- [ ] Integrar arquivos estáticos (CSS, JS)
+- [ ] Carregar arquivos estáticos
+- [ ] Criando o base.html
+- [ ] Separando em partials
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
 Para contribuir com <nome_do_projeto>, siga estas etapas:

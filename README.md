@@ -32,7 +32,11 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     # substituir o nome PersonalCheff pelo nome do projeto que você quiser
     django-admin.py startproject PersonalCheff
     ```
-- [ ] Subir o servidor e testar o projeto
+- [X] Subir o servidor e testar o projeto
+    ```python
+    cd PersonalCheff
+    python manage.py runserver
+    ```
 
 
 ## 📫 Contribuindo para <nome_do_projeto>

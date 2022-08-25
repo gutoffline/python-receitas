@@ -44,7 +44,10 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 - [X] Alterar o time zone da aplicação para são paulo
     - No arquivo `settings.py` alterar na linha 106 de `UTC` para `America/Sao_Paulo`
     - lista de time zones [aqui](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)
-
+- [X] Criar app receitas
+    ```python
+        python manage.py startapp receitas
+    ```
 
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->

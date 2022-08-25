@@ -18,15 +18,20 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - [X] Instalar Visual Studio Code
 - [ ] Criar e ativar o ambiente virtual
     ```python
-    #utilizar python ou python3
+    # utilizar python ou python3
     python3 -m venv .\venv\ 
     venv\Scripts\activate
     ```
-- [ ] Instalar o Django
+- [X] Instalar o Django
     ```python
+    # utilizar a versão 3.2 pois é a LTS
     python -m pip install django==3.2
     ```
-- [ ] Criar o projeto PersonalCheff
+- [X] Criar o projeto PersonalCheff
+    ```python
+    # substituir o nome PersonalCheff pelo nome do projeto que você quiser
+    django-admin.py startproject PersonalCheff
+    ```
 - [ ] Subir o servidor e testar o projeto
 
 

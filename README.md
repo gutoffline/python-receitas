@@ -86,7 +86,16 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
                 path('admin/', admin.site.urls),
             ]
         ```
-Agora, precisamos acessá-lo entrando na pasta "receita" que ainda não tem nada relacionado a url.
+- [X] Criando o arquivo index.html
+    - Dentro de receitas crie a pasta `templates` 
+    - Dentro da pasta templates crie o arquivo `index.html`. Neste arquivo crie seu index como desejar.
+    - No arquivo `views.py` faça as alterações:
+        ```python
+        from django.shortcuts import render
+
+        def index(request):
+            return render(request, 'index.html')
+        ```
 
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->

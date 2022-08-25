@@ -41,7 +41,7 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     ```
 - [X] Alterar o idioma da aplicação para pt-br
     - No arquivo `settings.py` alterar na linha 106 de `en-us` para `pt-br`
-- [ ] Alterar o time zone da aplicação para são paulo
+- [X] Alterar o time zone da aplicação para são paulo
     - No arquivo `settings.py` alterar na linha 106 de `UTC` para `America/Sao_Paulo`
     - lista de time zones [aqui](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)
 

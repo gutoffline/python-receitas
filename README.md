@@ -9,15 +9,23 @@
 
 > Uma aplicação web de receitas culinárias chamada PersonalCheff que receberá novas receitas de culinária utilizando Python e o framework de Django. Clicando em cada ícone, serão apresentadas as informações, ingredientes e modo de preparo.
 
-### Ajustes e melhorias
+### Lista de tarefas
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+Segue a lista de tarefas a serem desenvolvidas no projeto:
 
 - [X] Pré-requisitos
     - [X] Instalar o Python
     - [X] Instalar Visual Studio Code
-- [ ] Criar o ambiente virtual
+- [ ] Criar e ativar o ambiente virtual
+    ```python
+    #utilizar python ou python3
+    python3 -m venv .\venv\ 
+    venv\Scripts\activate
+    ```
 - [ ] Instalar o Django
+    ```python
+    python -m pip install django==3.2
+    ```
 - [ ] Criar o projeto PersonalCheff
 - [ ] Subir o servidor e testar o projeto
 

@@ -48,9 +48,26 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     ```python
         python manage.py startapp receitas
     ```
-- [ ] Registrar o app receitas
+- [X] Registrar o app receitas
     - Em `apps.py`, visualizamos a classe `ReceitasConfig()` com um `name` que deve ser igual a `receitas` que é utilizado para seu registro, dizendo às configurações de que esse app criado faz parte do projeto.
-    - Em `settings.py`, adicionamos 'receitas' à lista de apps (INSTALLED_APPS). Ao salvar, este está registrado no trabalho. Agora, precisamos acessá-lo entrando na pasta "receita" que ainda não tem nada relacionado a url.
+    - Em `settings.py`, adicionamos 'receitas' à lista de apps (INSTALLED_APPS). Ao salvar, este está registrado no trabalho. 
+- [X] Configurando a rota inicial
+    - Dentro da pasta receitas(app) criar o arquivo `urls.py`
+    - no arquivo  `urls.py`
+        ```python
+            # para poder utilizar as urls do django precisamos importar as urls
+            from django.urls import re_path
+
+            # o arquivo de views é quem faz a manipulação de qual url será devolvida e exibida 
+            from . import views
+
+            urlpatterns = [
+                # path(rota, view, namespace)
+                path('',views.index, name='index')
+            ]
+        ```
+
+Agora, precisamos acessá-lo entrando na pasta "receita" que ainda não tem nada relacionado a url.
 
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->

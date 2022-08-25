@@ -2,8 +2,10 @@
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 <img src="exemplo-image.png" alt="exemplo imagem">
 
@@ -16,7 +18,7 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 - [X] Pré-requisitos
     - [X] Instalar o Python
     - [X] Instalar Visual Studio Code
-- [ ] Criar e ativar o ambiente virtual
+- [X] Criar e ativar o ambiente virtual
     ```python
     # utilizar python ou python3
     python3 -m venv .\venv\ 
@@ -37,6 +39,11 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     cd PersonalCheff
     python manage.py runserver
     ```
+- [X] Alterar o idioma da aplicação para pt-br
+    - No arquivo `settings.py` alterar na linha 106 de `en-us` para `pt-br`
+- [ ] Alterar o time zone da aplicação para são paulo
+    - No arquivo `settings.py` alterar na linha 106 de `UTC` para `America/Sao_Paulo`
+    - lista de time zones [aqui](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)
 
 
 ## 📫 Contribuindo para <nome_do_projeto>

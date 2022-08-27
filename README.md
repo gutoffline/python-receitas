@@ -96,7 +96,27 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
         def index(request):
             return render(request, 'index.html')
         ```
-- [ ] Integrar arquivos estáticos (CSS, JS)
+- [X] Integrar arquivos estáticos (CSS, JS)
+    - https://docs.djangoproject.com/pt-br/2.0/howto/static-files/
+    - no arquivo `settings.py`:
+        - na linha 58 adicionar valor à propriedade `DIRS` da seguinte forma:
+            ```python
+            'DIRS': [os.path.join(BASE_DIR, 'receitas/templates')],
+            ```
+        - no final do arquivo, após a linha `STATIC_URL` adicionar as linhas abaixo para referenciar ao django aonde estão nossos arquivos estáticos:
+            ```python
+            STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+            STATICFILES_DIRS = [
+                os.path.join(BASE_DIR, 'PersonalCheff/static')
+            ]
+            ```
+        - dentro da pasta do projeto PersonalCheff crie uma pasta chamada `static` e coloque seus arquivos estáticos (img, css, js)
+        - no terminal(dentro da pasta do projeto) digite `python manage.py collectstatic`
+        - no arquivo index.html  coloque o comando python `{% load static %}`
+        - agora, nos arquivos html, quando for carregar algum arquivo estático  você deve utilizar como no exemplo abaixo:
+            ```python
+                <img src="{% static 'logo.png' %}">
+            ```
 - [ ] Carregar arquivos estáticos
 - [ ] Criando o base.html
 - [ ] Separando em partials

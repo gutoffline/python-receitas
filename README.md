@@ -117,7 +117,11 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
             ```python
                 <img src="{% static 'logo.png' %}">
             ```
-- [ ] Carregar arquivos estáticos
+- [ ] Utilizando links
+    - para criar um link para a página index ou outra rota qualquer você deve utilizar:
+        ```python
+            <a href="{% url 'index' %}">Home</a>
+        ```
 - [ ] Criando o base.html
 - [ ] Separando em partials
 ## 📫 Contribuindo para <nome_do_projeto>

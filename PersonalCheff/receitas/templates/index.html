@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<a href="{% url 'index' %}">
-    <img src="{% static 'logo.png' %}">
-</a>
-<h1>PersonalCheff</h1>
+{% include 'partials/header.html' %}
 <h2>Seja bem vindo ao site</h2>
 <table>
     <thead>
@@ -24,4 +21,5 @@
         </tr>
     </tbody>
 </table>
+{% include 'partials/footer.html' %}
 {% endblock %}

@@ -166,7 +166,11 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     {% endblock %}
 
     ```
-- [ ] Separando em partials
+- [X] Separando em partials
+    - dentro da pasta templates crie uma pasta chamada `partials`
+    - dentro da pasta partials crie os arquivos que serão as partes utilizadas como `header.html`, `footer.html`, `menu.html`, etc.
+    - insira dentro dos arquivos os respectivos códigos das partes. Não se esqueça de utilizar o comando `{% load static %}` para carregar os arquivos estáticos
+    - para incluir as partials nos arquivos de destino utilize `{% include 'partials/header.html' %}`  no local onde deseja inserir.
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
 Para contribuir com <nome_do_projeto>, siga estas etapas:

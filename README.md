@@ -117,12 +117,55 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
             ```python
                 <img src="{% static 'logo.png' %}">
             ```
-- [ ] Utilizando links
+- [X] Utilizando links
     - para criar um link para a página index ou outra rota qualquer você deve utilizar:
         ```python
             <a href="{% url 'index' %}">Home</a>
         ```
-- [ ] Criando o base.html
+- [X] Criando o base.html
+    - na pasta templates crie o arquivo `base.html`. Esse arquivo será o código base de todas as páginas para evitar duplicação de código. Nele você deve deixar tudo que tiver antes do `<body>` e tudo que tiver depois do `</body>`.
+    - no arquivo `base.html`, no local onde deve ser carregado o conteúdo das outras páginas, ou seja o conteúdo diferente você deve utilizar o comando `{% block content %}` e `{% endblock%}` 
+    - nesse arquivo deve ter o `{% load static %}` para carregar os arquivos estáticos
+    - o código do arquivo `base.html` deve ser algo como:
+    ```html
+        {% load static %}
+        <!DOCTYPE html>
+        <html lang="pt-br">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>PersonalCheff</title>
+        </head>
+
+        <body>
+            {% block content %}
+
+            {% endblock %}
+        </body>
+
+        </html>
+    ```
+    - no arquivo aonde será utilizado o base.html (o index, o receita, etc) você deve iniciar com a instrução `{% extends 'base.html' %}` e indicar o início e fim do do bloco com os respectivos comandos `{% block content %}` e `{% endblock %}`.
+    - o `index.html` ficará parecido com:
+    ```html
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block content %}
+    <a href="{% url 'index' %}">
+        <img src="{% static 'logo.png' %}">
+    </a>
+    <h1>PersonalCheff</h1>
+    <h2>Seja bem vindo ao site</h2>
+    <table>
+        .
+        .
+        .
+    </table>
+    {% endblock %}
+
+    ```
 - [ ] Separando em partials
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->

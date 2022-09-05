@@ -171,6 +171,17 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - dentro da pasta partials crie os arquivos que serão as partes utilizadas como `header.html`, `footer.html`, `menu.html`, etc.
     - insira dentro dos arquivos os respectivos códigos das partes. Não se esqueça de utilizar o comando `{% load static %}` para carregar os arquivos estáticos
     - para incluir as partials nos arquivos de destino utilize `{% include 'partials/header.html' %}`  no local onde deseja inserir.
+- [] Criando um dicionario de receitas e enviando dados para o template renderizar
+- [] Criando o banco de dados e as tabelas (MySQL)
+- [] Instalando o conector do bando de dados MySQL
+- [] Criando o modelo da receita
+- [] Criando a migration (mapeamento)
+- [] Realizando a migration
+- [] Registrando um modelo no admin
+- [] Criando um usuário para o ambiente administrativo
+- [] Listando os dados do banco de dados
+- [] 
+
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
 Para contribuir com <nome_do_projeto>, siga estas etapas:

@@ -127,45 +127,44 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - no arquivo `base.html`, no local onde deve ser carregado o conteúdo das outras páginas, ou seja o conteúdo diferente você deve utilizar o comando `{% block content %}` e `{% endblock%}` 
     - nesse arquivo deve ter o `{% load static %}` para carregar os arquivos estáticos
     - o código do arquivo `base.html` deve ser algo como:
-    ```html
-        {% load static %}
-        <!DOCTYPE html>
-        <html lang="pt-br">
+        ```html
+            {% load static %}
+            <!DOCTYPE html>
+            <html lang="pt-br">
 
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>PersonalCheff</title>
-        </head>
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>PersonalCheff</title>
+            </head>
 
-        <body>
-            {% block content %}
+            <body>
+                {% block content %}
 
-            {% endblock %}
-        </body>
+                {% endblock %}
+            </body>
 
-        </html>
-    ```
+            </html>
+        ```
     - no arquivo aonde será utilizado o base.html (o index, o receita, etc) você deve iniciar com a instrução `{% extends 'base.html' %}` e indicar o início e fim do do bloco com os respectivos comandos `{% block content %}` e `{% endblock %}`.
     - o `index.html` ficará parecido com:
-    ```html
-    {% extends 'base.html' %}
-    {% load static %}
-    {% block content %}
-    <a href="{% url 'index' %}">
-        <img src="{% static 'logo.png' %}">
-    </a>
-    <h1>PersonalCheff</h1>
-    <h2>Seja bem vindo ao site</h2>
-    <table>
-        .
-        .
-        .
-    </table>
-    {% endblock %}
-
-    ```
+        ```html
+        {% extends 'base.html' %}
+        {% load static %}
+        {% block content %}
+        <a href="{% url 'index' %}">
+            <img src="{% static 'logo.png' %}">
+        </a>
+        <h1>PersonalCheff</h1>
+        <h2>Seja bem vindo ao site</h2>
+        <table>
+            .
+            .
+            .
+        </table>
+        {% endblock %}
+        ```
 - [X] Separando em partials
     - dentro da pasta templates crie uma pasta chamada `partials`
     - dentro da pasta partials crie os arquivos que serão as partes utilizadas como `header.html`, `footer.html`, `menu.html`, etc.
@@ -173,73 +172,73 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - para incluir as partials nos arquivos de destino utilize `{% include 'partials/header.html' %}`  no local onde deseja inserir.
 - [X] Renderizando dados dinamicamente
     - Vamos trocar as informações da receita que no momento estão com dados fixos para dados dinâmicos. Eu quero gerar a lista de receitas de forma dinâmica, para isso existe uma forma de fazer isso usando o Django passando uma informação para o `template`, na hora que vou renderizar a página `index.html`. Vamos no arquivo `views.py` e passar um dicionário na linha aonde realizamos a rederização do `index.html`:
-    ```python
-    def index(request):
-        return render(request, 'index.html', {'nome_da_receita':'Suco de Laranja'})
-    ```
+        ```python
+        def index(request):
+            return render(request, 'index.html', {'nome_da_receita':'Suco de Laranja'})
+        ```
     - Agora precisamos informar no nosso template aonde será exibida a informação do dicionário passado. Vá no arquivo `index.html` e vamos utilizar os marcadores `{{ }}` ao invés de `{% %}`. Utilizando o delimitador `{% %}` consigo incluir qualquer código python no meu template html. Este código será processado mas não necessariamente será impresso na tela. Só se eu fizer um `print(nome)`, que o valor do nome vai aparecer. Utilizamos o delimitador `{{ }}` para imprimir texto no html. Resumindo:
         - `{{ }}` é utilizado apenas para chamar variáveis. Já o `{% %}` é utilizado para utilizar os métodos do python, como `if` e `for`.
     - no arquivo `index.html` substitua o texto `SUCO DE LARANJA` por `{{ nome_da_receita }}` :
-    ```html
-        <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
-    ```
+        ```html
+            <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
+        ```
 - [X] Criando um dicionario com as receitas
     - no arquivo `views.py` vamos criar um dicionário com as receitas, modifique a função index da seguinte forma: 
-    ```python
-        def index(request):
-            receitas = {
-                1:'Suco de Laranja',
-                2:'Suco de Limão',
-                3:'Suco de Morango'
-            }
-            
-            dados = {
-                'nome_das_receitas' : receitas
-            }
-            return render(request, 'index.html', dados)
-    ```
+        ```python
+            def index(request):
+                receitas = {
+                    1:'Suco de Laranja',
+                    2:'Suco de Limão',
+                    3:'Suco de Morango'
+                }
+                
+                dados = {
+                    'nome_das_receitas' : receitas
+                }
+                return render(request, 'index.html', dados)
+        ```
     - na página `index.html` precisamos criar um laço de repetição para listar as receitas. Para isso vamos pegar a linha da tabela e colocar dentro de um laço que leia a quantidade de receitas: 
-    ```python
-        <tbody>
-            {% for chave, nome_da_receita in nome_das_receitas.items %}
-                <tr>
-                    <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
-                    <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    ```
+        ```python
+            <tbody>
+                {% for chave, nome_da_receita in nome_das_receitas.items %}
+                    <tr>
+                        <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
+                        <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        ```
 - [X] Criando o banco de dados(MySQL/MariaDB)
     - No terminal, execute o comando `pip install mysqlclient` para instalar a lib do mysql
     - Abra o PHPMyAdmin e crie um banco de dados chamado `dbreceitas`
 - [X] Instalando o conector do bando de dados MySQL
     - Abra o arquivo `settings.py` e vá até a linha de configuração `DATABASES` (~78) e realize a configuração de acesso ao banco de dados da seguinte forma:
-    ```python
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'dbreceitas',
-                'USER': 'root',
-                'PASSWORD': '',
-                'HOST': 'localhost',
-                'PORT': '3306',
+        ```python
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.mysql',
+                    'NAME': 'dbreceitas',
+                    'USER': 'root',
+                    'PASSWORD': '',
+                    'HOST': 'localhost',
+                    'PORT': '3306',
+                }
             }
-        }
-    ```
+        ```
 - [X] Criando o modelo da receita
     - abra o arquivo `models.py` que está dentro da pasta receitas (app). Vamos criar o nosso modelo para receitas:
-    ```python
-    from django.db import models
-    from datetime import datetime
+        ```python
+        from django.db import models
+        from datetime import datetime
 
-    class Receitas(models.Model):
-        nome_receita = models.CharField(max_length=100)
-        ingredientes = models.TextField()
-        modo_preparo = models.TextField()
-        nota = models.IntegerField()
-        dificuldade = models.IntegerField()
-        data_receita = models.DateTimeField(default=datetime.now, blank=True)
-    ```
+        class Receitas(models.Model):
+            nome_receita = models.CharField(max_length=100)
+            ingredientes = models.TextField()
+            modo_preparo = models.TextField()
+            nota = models.IntegerField()
+            dificuldade = models.IntegerField()
+            data_receita = models.DateTimeField(default=datetime.now, blank=True)
+        ```
 - [X] Criando a migration (mapeamento)
     - no terminal digite o comando `python manage.py makemigrations`. Com isso nós criamos uma lista de coisas que queremos migrar para o banco só que ainda não enviamos de fato
 - [X] Realizando a migration
@@ -247,12 +246,12 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - Vá no `PHPMyAdmin` e veja as tabelas criadas a partir das migrações.
 - [X] Registrando um modelo no admin
     - abra o arquivo `admin.py` para fazermos o registro de nosso modelo receitas. A paritr disso será criado um módulo de receitas no admin do django. No `admin.py` escreva o código:
-    ```python
-        from django.contrib import admin
-        from .models import Receitas
+        ```python
+            from django.contrib import admin
+            from .models import Receitas
 
-        admin.site.register(Receitas)
-    ```
+            admin.site.register(Receitas)
+        ```
     - acesse http://127.0.0.1:8000/admin
 - [X] Criando um usuário para o ambiente administrativo
     - Precisamos criar um usuário para acessar a área administrativa. No terminal digite o comando `python manage.py createsuperuser` e preencha os campos.

@@ -210,9 +210,22 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
         </tbody>
     ```
 - [X] Criando o banco de dados(MySQL/MariaDB)
+    - No terminal, execute o comando `pip install mysqlclient` para instalar a lib do mysql
     - Abra o PHPMyAdmin e crie um banco de dados chamado `dbreceitas`
-- [] Instalando o conector do bando de dados MySQL
-    - - Abra o arquivo `settings.py` e vá até a linha de configuração `DATABASES` (~78)
+- [X] Instalando o conector do bando de dados MySQL
+    - Abra o arquivo `settings.py` e vá até a linha de configuração `DATABASES` (~78) e realize a configuração de acesso ao banco de dados da seguinte forma:
+    ```python
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'dbreceitas',
+                'USER': 'root',
+                'PASSWORD': '',
+                'HOST': 'localhost',
+                'PORT': '3306',
+            }
+        }
+    ```
 - [] Criando o modelo da receita
 - [] Criando a migration (mapeamento)
 - [] Realizando a migration

@@ -256,6 +256,9 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - acesse http://127.0.0.1:8000/admin
 - [X] Criando um usuário para o ambiente administrativo
     - Precisamos criar um usuário para acessar a área administrativa. No terminal digite o comando `python manage.py createsuperuser` e preencha os campos.
+    - Volte na área administrativa e informe o usuário e senha criados para acesar a área administrativa
+    - Veja que o módulo de receitas está visível, isso só acontece porque registramos o o modelo no `admin.py`.
+    - Adicione algumas receitas.
 - [] Listando os dados do banco de dados
 - [] 
 

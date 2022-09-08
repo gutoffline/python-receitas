@@ -11,10 +11,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
-            <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
-        </tr>
+        {% for chave, nome_da_receita in nome_das_receitas.items %}
+            <tr>
+                <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
+                <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
+            </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% include 'partials/footer.html' %}

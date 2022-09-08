@@ -242,7 +242,9 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     ```
 - [X] Criando a migration (mapeamento)
     - no terminal digite o comando `python manage.py makemigrations`. Com isso nós criamos uma lista de coisas que queremos migrar para o banco só que ainda não enviamos de fato
-- [] Realizando a migration
+- [X] Realizando a migration
+    - Sempre que executamos nosso servidor a mensagem `You have 18 unapplied migration(s).` é exibida, essa mensagem se refere à migrações pendentes que temos. Essas migrações são do ambiente administrativo do django, quando efetivarmos a migração para o banco de dados, além do nosso modelo de receitas, também seram feitas essas migrações pendentes. No terminal digite o comando `python manage.py migrate` 
+    - Vá no `PHPMyAdmin` e veja as tabelas criadas a partir das migrações.
 - [] Registrando um modelo no admin
 - [] Criando um usuário para o ambiente administrativo
 - [] Listando os dados do banco de dados

@@ -226,8 +226,22 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
             }
         }
     ```
-- [] Criando o modelo da receita
-- [] Criando a migration (mapeamento)
+- [X] Criando o modelo da receita
+    - abra o arquivo `models.py` que está dentro da pasta receitas (app). Vamos criar o nosso modelo para receitas:
+    ```python
+    from django.db import models
+    from datetime import datetime
+
+    class Receitas(models.Model):
+        nome_receita = models.CharField(max_length=100)
+        ingredientes = models.TextField()
+        modo_preparo = models.TextField()
+        nota = models.IntegerField()
+        dificuldade = models.IntegerField()
+        data_receita = models.DateTimeField(default=datetime.now, blank=True)
+    ```
+- [X] Criando a migration (mapeamento)
+    - no terminal digite o comando `python manage.py makemigrations`. Com isso nós criamos uma lista de coisas que queremos migrar para o banco só que ainda não enviamos de fato
 - [] Realizando a migration
 - [] Registrando um modelo no admin
 - [] Criando um usuário para o ambiente administrativo

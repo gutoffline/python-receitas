@@ -209,8 +209,10 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
             {% endfor %}
         </tbody>
     ```
-- [] Criando o banco de dados e as tabelas (MySQL)
+- [X] Criando o banco de dados(MySQL/MariaDB)
+    - Abra o PHPMyAdmin e crie um banco de dados chamado `dbreceitas`
 - [] Instalando o conector do bando de dados MySQL
+    - - Abra o arquivo `settings.py` e vá até a linha de configuração `DATABASES` (~78)
 - [] Criando o modelo da receita
 - [] Criando a migration (mapeamento)
 - [] Realizando a migration

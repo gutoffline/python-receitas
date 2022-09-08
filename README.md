@@ -171,7 +171,20 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - dentro da pasta partials crie os arquivos que serão as partes utilizadas como `header.html`, `footer.html`, `menu.html`, etc.
     - insira dentro dos arquivos os respectivos códigos das partes. Não se esqueça de utilizar o comando `{% load static %}` para carregar os arquivos estáticos
     - para incluir as partials nos arquivos de destino utilize `{% include 'partials/header.html' %}`  no local onde deseja inserir.
-- [] Criando um dicionario de receitas e enviando dados para o template renderizar
+- [X] Renderizando dados dinamicamente
+    - Vamos trocar as informações da receita que no momento estão com dados fixos para dados dinâmicos. Eu quero gerar a lista de receitas de forma dinâmica, para isso existe uma forma de fazer isso usando o Django passando uma informação para o template, na hora que vou renderizar a página index.html. Vamos no arquivo views.py e passar um dicionário na linha aonde realizamos a rederização do index.html:
+    ```python
+    def index(request):
+        return render(request, 'index.html', {'nome_da_receita':'Suco de Laranja'})
+    ```
+    - Agora precisamos informar no nosso template aonde será exibida a informação do dicionário passado. Vá no arquivo index.html e vamos utilizar os marcadores `{{ }}` ao invés de `{% %}`. Utilizando o delimitador `{% %}` consigo incluir qualquer código python no meu template html. Este código será processado mas não necessariamente será impresso na tela. Só se eu fizer um print(nome), que o valor do nome vai aparecer. Utilizamos o delimitador `{{ }}` para imprimir texto no html. Resumindo:
+        - "{{}}" é utilizado apenas para chamar variáveis. Já o "{%%}" é utilizado para utilizar os métodos do python, como if e for.
+    - no arquivo `index.html` substitua o texto `SUCO DE LARANJA` por `{{ nome_da_receita }}` :
+    ```html
+        <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
+    ```
+
+- [] Criando um dicionario com as receitas
 - [] Criando o banco de dados e as tabelas (MySQL)
 - [] Instalando o conector do bando de dados MySQL
 - [] Criando o modelo da receita

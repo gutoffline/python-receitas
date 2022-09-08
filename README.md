@@ -46,7 +46,7 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - lista de time zones [aqui](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)
 - [X] Criar app receitas
     ```python
-        python manage.py startapp receitas
+    python manage.py startapp receitas
     ```
 - [X] Registrar o app receitas
     - Em `apps.py`, visualizamos a classe `ReceitasConfig()` com um `name` que deve ser igual a `receitas` que é utilizado para seu registro, dizendo às configurações de que esse app criado faz parte do projeto.
@@ -55,36 +55,36 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - Dentro da pasta receitas(app) criar o arquivo `urls.py`
     - no arquivo  `urls.py`
         ```python
-            # para poder utilizar as urls do django precisamos importar as urls
-            from django.urls import path
+        # para poder utilizar as urls do django precisamos importar as urls
+        from django.urls import path
 
-            # o arquivo de views é quem faz a manipulação de qual url será devolvida e exibida 
-            from . import views
+        # o arquivo de views é quem faz a manipulação de qual url será devolvida e exibida 
+        from . import views
 
-            urlpatterns = [
-                # path(rota, view, namespace)
-                path('',views.index, name='index')
-            ]
+        urlpatterns = [
+            # path(rota, view, namespace)
+            path('',views.index, name='index')
+        ]
         ```
 - [X] Criando a view para a rota inicial
     - Dentro da pasta receitas(app) abrir o arquivo `views.py`
         ```python
-            from django.shortcuts import render
-            from django.http import HttpResponse
+        from django.shortcuts import render
+        from django.http import HttpResponse
 
-            def index(request):
-                return HttpResponse('<h1>PersonalCheff</h1>')
+        def index(request):
+            return HttpResponse('<h1>PersonalCheff</h1>')
         ```
 - [X] Registrando a rota inicial
     - Dentro da pasta PersonalCheff(app) abrir o arquivo `urls.py`
         ```python
-            from django.contrib import admin
-            from django.urls import path, include
+        from django.contrib import admin
+        from django.urls import path, include
 
-            urlpatterns = [
-                path('', include('receitas.urls')),
-                path('admin/', admin.site.urls),
-            ]
+        urlpatterns = [
+            path('', include('receitas.urls')),
+            path('admin/', admin.site.urls),
+        ]
         ```
 - [X] Criando o arquivo index.html
     - Dentro de receitas crie a pasta `templates` 
@@ -115,12 +115,12 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
         - no arquivo index.html  coloque o comando python `{% load static %}`
         - agora, nos arquivos html, quando for carregar algum arquivo estático  você deve utilizar como no exemplo abaixo:
             ```python
-                <img src="{% static 'logo.png' %}">
+            <img src="{% static 'logo.png' %}">
             ```
 - [X] Utilizando links
     - para criar um link para a página index ou outra rota qualquer você deve utilizar:
         ```python
-            <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'index' %}">Home</a>
         ```
 - [X] Criando o base.html
     - na pasta templates crie o arquivo `base.html`. Esse arquivo será o código base de todas as páginas para evitar duplicação de código. Nele você deve deixar tudo que tiver antes do `<body>` e tudo que tiver depois do `</body>`.
@@ -128,24 +128,24 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - nesse arquivo deve ter o `{% load static %}` para carregar os arquivos estáticos
     - o código do arquivo `base.html` deve ser algo como:
         ```html
-            {% load static %}
-            <!DOCTYPE html>
-            <html lang="pt-br">
+        {% load static %}
+        <!DOCTYPE html>
+        <html lang="pt-br">
 
-            <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>PersonalCheff</title>
-            </head>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>PersonalCheff</title>
+        </head>
 
-            <body>
-                {% block content %}
+        <body>
+            {% block content %}
 
-                {% endblock %}
-            </body>
+            {% endblock %}
+        </body>
 
-            </html>
+        </html>
         ```
     - no arquivo aonde será utilizado o base.html (o index, o receita, etc) você deve iniciar com a instrução `{% extends 'base.html' %}` e indicar o início e fim do do bloco com os respectivos comandos `{% block content %}` e `{% endblock %}`.
     - o `index.html` ficará parecido com:
@@ -180,33 +180,33 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
         - `{{ }}` é utilizado apenas para chamar variáveis. Já o `{% %}` é utilizado para utilizar os métodos do python, como `if` e `for`.
     - no arquivo `index.html` substitua o texto `SUCO DE LARANJA` por `{{ nome_da_receita }}` :
         ```html
-            <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
+        <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
         ```
 - [X] Criando um dicionario com as receitas
     - no arquivo `views.py` vamos criar um dicionário com as receitas, modifique a função index da seguinte forma: 
         ```python
-            def index(request):
-                receitas = {
-                    1:'Suco de Laranja',
-                    2:'Suco de Limão',
-                    3:'Suco de Morango'
-                }
-                
-                dados = {
-                    'nome_das_receitas' : receitas
-                }
-                return render(request, 'index.html', dados)
+        def index(request):
+            receitas = {
+                1:'Suco de Laranja',
+                2:'Suco de Limão',
+                3:'Suco de Morango'
+            }
+            
+            dados = {
+                'nome_das_receitas' : receitas
+            }
+            return render(request, 'index.html', dados)
         ```
     - na página `index.html` precisamos criar um laço de repetição para listar as receitas. Para isso vamos pegar a linha da tabela e colocar dentro de um laço que leia a quantidade de receitas: 
         ```python
-            <tbody>
-                {% for chave, nome_da_receita in nome_das_receitas.items %}
-                    <tr>
-                        <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
-                        <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
+        <tbody>
+            {% for chave, nome_da_receita in nome_das_receitas.items %}
+                <tr>
+                    <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
+                    <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
+                </tr>
+            {% endfor %}
+        </tbody>
         ```
 - [X] Criando o banco de dados(MySQL/MariaDB)
     - No terminal, execute o comando `pip install mysqlclient` para instalar a lib do mysql
@@ -214,16 +214,16 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 - [X] Instalando o conector do bando de dados MySQL
     - Abra o arquivo `settings.py` e vá até a linha de configuração `DATABASES` (~78) e realize a configuração de acesso ao banco de dados da seguinte forma:
         ```python
-            DATABASES = {
-                'default': {
-                    'ENGINE': 'django.db.backends.mysql',
-                    'NAME': 'dbreceitas',
-                    'USER': 'root',
-                    'PASSWORD': '',
-                    'HOST': 'localhost',
-                    'PORT': '3306',
-                }
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'dbreceitas',
+                'USER': 'root',
+                'PASSWORD': '',
+                'HOST': 'localhost',
+                'PORT': '3306',
             }
+        }
         ```
 - [X] Criando o modelo da receita
     - abra o arquivo `models.py` que está dentro da pasta receitas (app). Vamos criar o nosso modelo para receitas:
@@ -247,10 +247,10 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 - [X] Registrando um modelo no admin
     - abra o arquivo `admin.py` para fazermos o registro de nosso modelo receitas. A paritr disso será criado um módulo de receitas no admin do django. No `admin.py` escreva o código:
         ```python
-            from django.contrib import admin
-            from .models import Receitas
+        from django.contrib import admin
+        from .models import Receitas
 
-            admin.site.register(Receitas)
+        admin.site.register(Receitas)
         ```
     - acesse http://127.0.0.1:8000/admin
 - [X] Criando um usuário para o ambiente administrativo

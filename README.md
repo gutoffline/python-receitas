@@ -253,7 +253,9 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 
         admin.site.register(Receitas)
     ```
-- [] Criando um usuário para o ambiente administrativo
+    - acesse http://127.0.0.1:8000/admin
+- [X] Criando um usuário para o ambiente administrativo
+    - Precisamos criar um usuário para acessar a área administrativa. No terminal digite o comando `python manage.py createsuperuser` e preencha os campos.
 - [] Listando os dados do banco de dados
 - [] 
 

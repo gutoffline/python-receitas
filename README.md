@@ -245,7 +245,14 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 - [X] Realizando a migration
     - Sempre que executamos nosso servidor a mensagem `You have 18 unapplied migration(s).` é exibida, essa mensagem se refere à migrações pendentes que temos. Essas migrações são do ambiente administrativo do django, quando efetivarmos a migração para o banco de dados, além do nosso modelo de receitas, também seram feitas essas migrações pendentes. No terminal digite o comando `python manage.py migrate` 
     - Vá no `PHPMyAdmin` e veja as tabelas criadas a partir das migrações.
-- [] Registrando um modelo no admin
+- [X] Registrando um modelo no admin
+    - abra o arquivo `admin.py` para fazermos o registro de nosso modelo receitas. A paritr disso será criado um módulo de receitas no admin do django. No `admin.py` escreva o código:
+    ```python
+        from django.contrib import admin
+        from .models import Receitas
+
+        admin.site.register(Receitas)
+    ```
 - [] Criando um usuário para o ambiente administrativo
 - [] Listando os dados do banco de dados
 - [] 

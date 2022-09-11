@@ -23,6 +23,8 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     # utilizar python ou python3
     python3 -m venv .\venv\ 
     venv\Scripts\activate
+    # se der erro no powershell utilize o comando abaixo para resolver a permissão
+    # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
 - [X] Instalar o Django
     ```python
@@ -99,6 +101,7 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
 - [X] Integrar arquivos estáticos (CSS, JS)
     - https://docs.djangoproject.com/pt-br/2.0/howto/static-files/
     - no arquivo `settings.py`:
+        - importe a bibliotec os utilizando `import os`no início do arquivo
         - na linha 58 adicionar valor à propriedade `DIRS` da seguinte forma:
             ```python
             'DIRS': [os.path.join(BASE_DIR, 'receitas/templates')],

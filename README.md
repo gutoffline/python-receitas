@@ -307,7 +307,7 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
         ```python
         urlpatterns = [
             path('',views.index, name='index'),
-            path('<int:receita_id>',views.receita, name='receita')
+            path('receita/<int:receita_id>/',views.receita, name='receita')
         ]
         ```
     - No arquivo `views.py` precisamos alterar a função `receita` para receber o `id`

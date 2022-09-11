@@ -3,6 +3,13 @@
 {% block content %}
 {% include 'partials/header.html' %}
 
+<h2>{{ receita.nome_receita }}</h2>
+<p>{{ receita.data_receita}} - Nota: {{ receita.nota}} - Dificuldade: {{ receita.dificuldade}}</p>
+<h3>Ingredientes</h3>
+<p>{{ receita.ingredientes}}</p>
+<h3>Modo de preparo</h3>
+<p>{{ receita.modo_preparo}}</p>
+
 {% include 'partials/footer.html' %}
 
 {% endblock%}

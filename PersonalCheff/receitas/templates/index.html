@@ -14,7 +14,7 @@
         {% if receitas %}
             {% for receita in receitas %}
                 <tr>
-                    <td><a href="{% url 'receita' %}">{{receita.nome_receita}}</a></td>
+                    <td><a href="{% url 'receita' receita.id %}">{{receita.nome_receita}}</a></td>
                     <td>{{receita.dificuldade}}</td>
                 </tr>
             {% endfor %}

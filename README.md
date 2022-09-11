@@ -273,23 +273,83 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
             return render(request, 'index.html', dados)
         ``` 
     - No arquivo `index.html` devemos alterar a forma como estamos listando as receitas, isso porque antes estávamos utilizando um dicionário e agora não mais. Teremos um trecho de código para fazer verificação da existência de receitas `{% if receitas %}` e caso não exista a receita será mostrada uma mensagem. Teremos uma alteração no laço de repetição para que seja verificado cada uma das receitas e atribuido à uma variável receita em cada passagem do laço com o código `{% for receita in receitas %}`. Para exibir os dados da receita será necessário a sintaxe objeto.nome_campo como por exemplo: `{{receita.nome_receita}}`:
-    ```python
-    <tbody>
-        {% if receitas %}
-            {% for receita in receitas %}
+        ```python
+        <tbody>
+            {% if receitas %}
+                {% for receita in receitas %}
+                    <tr>
+                        <td><a href="{% url 'receita' %}">{{receita.nome_receita}}</a></td>
+                        <td>{{receita.dificuldade}}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
                 <tr>
-                    <td><a href="{% url 'receita' %}">{{receita.nome_receita}}</a></td>
-                    <td>{{receita.dificuldade}}</td>
+                    <th colspan="2">Não existem receitas cadastradas</th>
                 </tr>
-            {% endfor %}
-        {% else %}
-            <tr>
-                <th colspan="2">Não existem receitas cadastradas</th>
-            </tr>
-        {% endif %}
-    </tbody>
-    ```
-- [] Exibição das páginas individuais das receitas
+            {% endif %}
+        </tbody>
+        ```
+- [X] Exibição das páginas individuais das receitas
+    - dentro da pasta `templates` crie o arquivo `receita.html`, esse será o arquivo *modelo* para exibirmos nossa receita. Você pode, temporariamente, colocar dados fixos apenas para fazer funcionar. Não esqueça de criar a rota `receita` no arquivo `urls.py` e de criar uma função `receita` no arquivo `views.py`. Minha página receitas.html ficou assim:
+        ```html
+        <h2>nome_receita</h2>
+        <p>data_receita - Nota: nota - Dificuldade: dificuldade</p>
+        <h3>Ingredientes</h3>
+        <p>ingredientes</p>
+        <h3>Modo de preparo</h3>
+        <p>modo_preparo</p>
+        ```
+    - Na `index.html`, no link de cada receita precisamos passar o `id` da receita que queremos visualizar:
+        ```python
+        <td><a href="{% url 'receita' receita.id %}">{{receita.nome_receita}}</a></td>
+        ```
+    - No arquivo `urls.py` precisamos preparar para receber esse id da receita no link
+        ```python
+        urlpatterns = [
+            path('',views.index, name='index'),
+            path('<int:receita_id>',views.receita, name='receita')
+        ]
+        ```
+    - No arquivo `views.py` precisamos alterar a função `receita` para receber o `id`
+        ```python
+        def receita(request, receita_id):
+        ```
+    - Nesse ponto, nossa aplicação está funcionando com as receitas sendo listadas e os links para as páginas individuais funcionando inclusive passando o id na url do navegador. Porém na página da receita individual ainda estão os dados fixos.
+    - No arquivo `views.py`: 
+        - Vamos capturar o parâmetro id da url para trazer as informações do banco de dados referente à esse id. Para isso vamos utilizar o comando `get_object_or_404()`.
+        - Comece realizando a importação das bibliotecas `get_list_or_404` e `get_object_or_404`
+            ```python
+            from django.shortcuts import render, get_list_or_404, get_object_or_404
+            ```
+        -  Crie uma variável que vai receber a receita correspondente ao id passado na url:
+            ```python
+            receita = get_object_or_404(Receitas, pk=receita_id)
+            ```
+        - Altere o que será enviado para renderização da página receitas.html
+            ```python
+            receita_exibir = {
+                'receita' : receita
+            }
+            return render(request, 'receita.html', receita_exibir)
+            ```
+        - Código da função receita completo: 
+            ```python
+            def receita(request, receita_id):
+                receita = get_object_or_404(Receitas, pk=receita_id)
+                receita_exibir = {
+                    'receita' : receita
+                }
+                return render(request, 'receita.html', receita_exibir)
+            ```
+    - por fim, altere no arquivo receita.html os valores fixos pelos campos do modelo Receitas:
+        ```html
+        <h2>{{ receita.nome_receita }}</h2>
+        <p>{{ receita.data_receita}} - Nota: {{ receita.nota}} - Dificuldade: {{ receita.dificuldade}}</p>
+        <h3>Ingredientes</h3>
+        <p>{{ receita.ingredientes}}</p>
+        <h3>Modo de preparo</h3>
+        <p>{{ receita.modo_preparo}}</p>
+        ```
 
 ## 📫 Contribuindo para <nome_do_projeto>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->

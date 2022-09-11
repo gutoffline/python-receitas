@@ -261,7 +261,34 @@ Segue a lista de tarefas a serem desenvolvidas no projeto:
     - Volte na área administrativa e informe o usuário e senha criados para acesar a área administrativa
     - Veja que o módulo de receitas está visível, isso só acontece porque registramos o o modelo no `admin.py`.
     - Adicione algumas receitas.
-- [] Listando os dados do banco de dados
+- [X] Trazendo os dados do banco de dados
+    - No arquivo `views.py` realize a importção do `model` de `Receita` inserindo o código `from .models import Receitas` no início do arquivo
+    - Agora vamos alterar a função `index`, vamos remover o dicionário receitas e substituir por uma consulta de todos os objetos receita do banco de dados através da model Receita:
+        ```python
+        def index(request):
+            receitas = Receitas.objects.all()
+            dados = {
+                'receitas' : receitas
+            }
+            return render(request, 'index.html', dados)
+        ``` 
+    - No arquivo `index.html` devemos alterar a forma como estamos listando as receitas, isso porque antes estávamos utilizando um dicionário e agora não mais. Teremos um trecho de código para fazer verificação da existência de receitas `{% if receitas %}` e caso não exista a receita será mostrada uma mensagem. Teremos uma alteração no laço de repetição para que seja verificado cada uma das receitas e atribuido à uma variável receita em cada passagem do laço com o código `{% for receita in receitas %}`. Para exibir os dados da receita será necessário a sintaxe objeto.nome_campo como por exemplo: `{{receita.nome_receita}}`:
+    ```python
+    <tbody>
+        {% if receitas %}
+            {% for receita in receitas %}
+                <tr>
+                    <td><a href="{% url 'receita' %}">{{receita.nome_receita}}</a></td>
+                    <td>{{receita.dificuldade}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <th colspan="2">Não existem receitas cadastradas</th>
+            </tr>
+        {% endif %}
+    </tbody>
+    ```
 - [] 
 
 ## 📫 Contribuindo para <nome_do_projeto>

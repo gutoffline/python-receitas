@@ -7,16 +7,22 @@
     <thead>
         <tr>
             <th>Nome da receita</th>
-            <th>Vídeo</th>
+            <th>Dificuldade</th>
         </tr>
     </thead>
     <tbody>
-        {% for chave, nome_da_receita in nome_das_receitas.items %}
+        {% if receitas %}
+            {% for receita in receitas %}
+                <tr>
+                    <td><a href="{% url 'receita' %}">{{receita.nome_receita}}</a></td>
+                    <td>{{receita.dificuldade}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
             <tr>
-                <td><a href="{% url 'receita' %}">{{nome_da_receita}}</a></td>
-                <td>https://www.youtube.com/watch?v=Nn9140bDPnc</td>
+                <th colspan="2">Não existem receitas cadastradas</th>
             </tr>
-        {% endfor %}
+        {% endif %}
     </tbody>
 </table>
 {% include 'partials/footer.html' %}
